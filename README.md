@@ -1,5 +1,9 @@
 # Suomalaiset NHL:ssä
 
+**Avaa sivu: https://m1ksu0.github.io/NHL-suomalaiset/**
+
+Sivu päivittyy automaattisesti joka päivä klo 07:00 UTC (09:00 Suomen talviaikaa). Repo: https://github.com/m1ksu0/NHL-suomalaiset
+
 Hakee suomalaisten NHL-pelaajien tiedot NHL:n epävirallisesta rajapinnasta ja tekee niistä verkkosivun, jonka GitHub Actions päivittää joka päivä.
 
 Sivulla on:
@@ -28,14 +32,16 @@ python fetch_data.py
 python build_html.py
 ```
 
-Sivu on tiedostossa `site/index.html`. Testit: `python -m unittest discover -s tests`.
+Sivu on tiedostossa `site/index.html`. Julkaistu versio on osoitteessa https://m1ksu0.github.io/NHL-suomalaiset/. Testit: `python -m unittest discover -s tests`.
 
 ## Julkaisu GitHub Pagesiin (kerran)
 
 1. Luo julkinen GitHub-repo ja pushaa koodi (`main`-haara).
 2. Repossa: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 3. **Actions → Päivitä suomalaiset NHL:ssä → Run workflow**.
-4. Sivu aukeaa osoitteessa `https://<käyttäjä>.github.io/<repo>/`.
+4. Sivu aukeaa osoitteessa https://m1ksu0.github.io/NHL-suomalaiset/ (yleisesti `https://<käyttäjä>.github.io/<repo>/`).
+
+Tuoreen tilanteen saa milloin tahansa ajamalla työnkulun käsin (vaihe 3).
 
 Tarkempi ohje: vaultin muistiinpano `GitHub Actions - ajastettu päivitys ja Pages`.
 
