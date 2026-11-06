@@ -52,4 +52,4 @@ Tarkempi ohje: vaultin muistiinpano `GitHub Actions - ajastettu päivitys ja Pag
 - **Tulossa-osion suomalaiset** poimitaan joukkueen nykyisestä kokoonpanosta (syntymämaa Suomi). Kokoonpanoa ei ole vahvistettu, joten loukkaantunut pelaaja voi näkyä listalla.
 - **Cron on UTC:ssä.** Kesäaikana ajo tapahtuu tunnin myöhemmin Suomen aikaa (klo 10.00).
 - Kausitilastot ovat vain runkosarjasta (`gameTypeId=2`). Pudotuspelien tulokset näkyvät Tulokset-osiossa, mutta eivät kausitilastoissa.
-- Jos repoon ei tule 60 päivään committeja, GitHub pysäyttää ajastukset. Käynnistä ne tarvittaessa ajamalla työnkulku käsin.
+- GitHub pysäyttää ajastukset, jos julkisessa repossa ei ole aktiivisuutta 60 päivään. Työnkulun viimeinen vaihe (**Keepalive**) tekee tyhjän commitin, kun viimeisin commit on yli 45 päivää vanha, joten se commitoi noin 6 viikon välein. Jos ajastus silti pysähtyy, käynnistä se ajamalla työnkulku käsin (Actions → Run workflow).

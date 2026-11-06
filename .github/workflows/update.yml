@@ -6,7 +6,7 @@ on:
   workflow_dispatch:       # voi ajaa käsin Actions-välilehdeltä
 
 permissions:
-  contents: read
+  contents: write   # keepalive-vaihe tekee tarvittaessa tyhjän commitin
   pages: write
   id-token: write
 
@@ -42,3 +42,18 @@ jobs:
           path: site
       - id: deploy
         uses: actions/deploy-pages@v4
+
+      # GitHub pysäyttää ajastukset, jos julkisessa repossa ei ole aktiivisuutta 60 päivään.
+      # Jos viimeisin commit on yli 45 päivää vanha, tehdään tyhjä commit.
+      - name: Keepalive
+        run: |
+          last=$(git log -1 --format=%ct)
+          now=$(date +%s)
+          age_days=$(( (now - last) / 86400 ))
+          echo "Viimeisin commit on $age_days päivää vanha"
+          if [ "$age_days" -ge 45 ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit --allow-empty -m "Keepalive: tyhjä commit, jotta ajastus ei pysähdy"
+            git push
+          fi
